@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /dspace-6.2-release/dspace/target/dspace-installer
+ant update
+echo "DSpace Ant installed"

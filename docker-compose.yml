@@ -1,0 +1,27 @@
+version: '3'
+services:
+  dspace-build:
+    build: dspace-build
+    volumes:
+      - dspace:/dspace
+    depends_on:
+      - postgres
+  postgres:
+    build: postgres
+    environment:
+      - POSTGRES_USER=dspace
+      - POSTGRES_PASSWORD=dspace
+    volumes:
+      - psql:/var/lib/postgresql/data
+  dspace:
+    build: dspace
+    volumes:
+      - dspace:/dspace
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+
+volumes:
+  dspace:
+  psql:
